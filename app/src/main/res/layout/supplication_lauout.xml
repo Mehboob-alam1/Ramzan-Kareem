@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_margin="3dp"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/engDuaTitle"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:text="When Waking up"/>
+        <TextView
+            android:id="@+id/urduDuaTitle"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:text="When Waking up"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/dua"
+            android:textColor="@color/color_700"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="الحَمْـدُ لِلّهِ الّذي أَحْـيانا بَعْـدَ ما أَماتَـنا وَإليه النُّـشور"/>
+        <TextView
+            android:id="@+id/duaTranslation"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/color_200"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="All praise is for Allah who gave us life after having taken it from us and unto Him is the resurrection."/>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

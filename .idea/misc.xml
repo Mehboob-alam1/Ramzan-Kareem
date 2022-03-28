@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/drawable/bg_prayer_constraint.xml" value="0.167" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/drawable/btn_search.xml" value="0.1645" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/drawable/btn_tasbih_bg.xml" value="0.146" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/drawable/gradient.xml" value="0.12" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/drawable/gradient_bg.xml" value="0.146" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/drawable/ic_home.xml" value="0.182" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/font/.xml" value="0.2265625" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/layout/activity_namaz.xml" value="0.1" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/layout/activity_qibla.xml" value="0.15433946130825138" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/layout/activity_splash.xml" value="0.22" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/layout/activity_tabs.xml" value="0.25" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/layout/fragment_alarm.xml" value="0.17395833333333333" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/layout/fragment_asma_ul_hassana.xml" value="0.18" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/layout/fragment_azkar.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/layout/fragment_pray_time.xml" value="0.22" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/layout/fragment_qibla.xml" value="0.17395833333333333" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/layout/fragment_ramazan_timing.xml" value="0.22" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/layout/fragment_tasbih.xml" value="0.2" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/layout/sample_layout.xml" value="0.1" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/layout/sample_prayers.xml" value="0.33" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/layout/supplication_lauout.xml" value="0.22" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/menu/menu.xml" value="0.22" />
+        <entry key="..\:/Users/prime/AndroidStudioProjects/RamzanKareem/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

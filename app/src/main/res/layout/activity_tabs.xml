@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activites.TabsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/gradient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/menu" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/color_200"
+        app:tabMode="scrollable"
+        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+        app:tabSelectedTextColor="@color/color_500"
+        app:tabTextColor="@color/black">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/ramdanTime"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Prayers" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/prayTime"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Pray Time" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tasbih"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tasbih" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/azkar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Azkar" />
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/asma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="99 names of Allah" />
+
+    </com.google.android.material.tabs.TabLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/viewPager"/>
+
+</LinearLayout>
