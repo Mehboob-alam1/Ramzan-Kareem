@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "801842824891",
+    "project_id": "ramzan-kareem-33357",
+    "storage_bucket": "ramzan-kareem-33357.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:801842824891:android:b12208451bf66dd9438b9e",
+        "android_client_info": {
+          "package_name": "com.mehboob.ramzankareem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "801842824891-qlb9eufodfuk5846sucs8ckuu4ti39gr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mehboob.ramzankareem",
+            "certificate_hash": "54b8a4a4bcb6c6d6d7d8f2af4fe84bd2c071090c"
+          }
+        },
+        {
+          "client_id": "801842824891-iplpb8appk3ild998jei11oqqilqf2pa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK1CyYJz9f25ner9g3z58bHSo0MrMNTFg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "801842824891-iplpb8appk3ild998jei11oqqilqf2pa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

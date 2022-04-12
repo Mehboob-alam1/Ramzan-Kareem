@@ -33,7 +33,7 @@ ArrayList<PrayerModel> list;
                              Bundle savedInstanceState) {
 
         View view= inflater.inflate(R.layout.fragment_ramazan_timing, container, false);
-        adView = (AdView) view. findViewById(R.id.ad_view);
+        adView = (AdView) view. findViewById(R.id.ad_view_ramzan);
         MobileAds.initialize(requireContext(), new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {

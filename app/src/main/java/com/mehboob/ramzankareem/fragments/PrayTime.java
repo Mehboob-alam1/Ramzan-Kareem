@@ -24,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
@@ -44,11 +45,12 @@ import java.util.Objects;
 
 
 public class PrayTime extends Fragment {
-    TextView mFajar,mZuhar,mAsar,mMaghrib,mIsha,mDate,mShurooq,mLocation;
+    TextView mFajar, mZuhar, mAsar, mMaghrib, mIsha, mDate, mShurooq, mLocation;
     EditText mSearchEt;
     ImageView mSearchBtn;
-    InterstitialAd mInterstitialAd;
 
+    private AdView adView;
+    AdRequest adRequest;
     private static final String TAG = "TAG";
     String tag_json_obj = "json_obj_req";
     ProgressDialog pDialog;
@@ -58,49 +60,30 @@ public class PrayTime extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_pray_time, container, false);
+        View view = inflater.inflate(R.layout.fragment_pray_time, container, false);
         initViews(view);
-        ///Interstitial ad
+
+        adView = (AdView) view. findViewById(R.id.ad_view_pray_time);
         MobileAds.initialize(requireContext(), new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
             }
         });
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-
-        InterstitialAd.load(requireContext(),getString(R.string.admob_interstitial_id), adRequest,
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        // The mInterstitialAd reference will be null until
-                        // an ad is loaded.
-                        mInterstitialAd = interstitialAd;
-
-                        if (mInterstitialAd != null) {
-                            mInterstitialAd.show(requireActivity());
-                        }
-                    }
-
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        // Handle the error
-
-                        mInterstitialAd = null;
-                    }
-                });
+        adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
         mSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 String search = mSearchEt.getText().toString();
-                if (search.isEmpty()){
+                if (search.isEmpty()) {
                     mSearchEt.setError("Enter any location");
-                }else{
-                    url="https://muslimsalat.com/"+search+".json?key=29f42b1a6ace46691fa70fca6ea22d43";
+                } else {
+                    url = "https://muslimsalat.com/" + search + ".json?key=29f42b1a6ace46691fa70fca6ea22d43";
                     searchLocation();
                 }
+
             }
         });
 
@@ -120,23 +103,23 @@ public class PrayTime extends Fragment {
                         Log.d(TAG, response.toString());
                         try {
                             // get the qibla
-                            String qibla =response.get("qibla_direction").toString();
+                            String qibla = response.get("qibla_direction").toString();
 
                             // getLocation
-                            String country =  response.get("country").toString();
-                            String state =response.get("state").toString();
-                            String city=response.get("city").toString();
-                            String location= country + "," + state + "," +city;
+                            String country = response.get("country").toString();
+                            String state = response.get("state").toString();
+                            String city = response.get("city").toString();
+                            String location = country + "," + state + "," + city;
 
                             // getting namaz time and date
-                            String Date= (String) response.getJSONArray("items").getJSONObject(0).get("date_for");
-                            String Fajar=response.getJSONArray("items").getJSONObject(0).get("fajr").toString();
-                            String Shurooq=response.getJSONArray("items").getJSONObject(0).get("shurooq").toString();
-                            String Zuhar=response.getJSONArray("items").getJSONObject(0).get("dhuhr").toString();
-                            String Asar=response.getJSONArray("items").getJSONObject(0).get("asr").toString();
-                            String Maghrib=response.getJSONArray("items").getJSONObject(0).get("maghrib").toString();
-                            String Isha=response.getJSONArray("items").getJSONObject(0).get("isha").toString();
-                            setData(Date,Fajar,Shurooq,Zuhar,Asar,Maghrib,Isha,location);
+                            String Date = (String) response.getJSONArray("items").getJSONObject(0).get("date_for");
+                            String Fajar = response.getJSONArray("items").getJSONObject(0).get("fajr").toString();
+                            String Shurooq = response.getJSONArray("items").getJSONObject(0).get("shurooq").toString();
+                            String Zuhar = response.getJSONArray("items").getJSONObject(0).get("dhuhr").toString();
+                            String Asar = response.getJSONArray("items").getJSONObject(0).get("asr").toString();
+                            String Maghrib = response.getJSONArray("items").getJSONObject(0).get("maghrib").toString();
+                            String Isha = response.getJSONArray("items").getJSONObject(0).get("isha").toString();
+                            setData(Date, Fajar, Shurooq, Zuhar, Asar, Maghrib, Isha, location);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -157,7 +140,8 @@ public class PrayTime extends Fragment {
         AppController.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
 
     }
-    private void setData(String date, String fajar, String shurooq, String zuhar, String asar, String maghrib, String isha,String location) {
+
+    private void setData(String date, String fajar, String shurooq, String zuhar, String asar, String maghrib, String isha, String location) {
 
         mDate.setText(date);
         mFajar.setText(fajar);
@@ -171,15 +155,38 @@ public class PrayTime extends Fragment {
 
     private void initViews(View view) {
 
-        mFajar=view.findViewById(R.id.fajarTv);
-        mSearchEt=view.findViewById(R.id.searchEt);
-        mSearchBtn=view.findViewById(R.id.searchBtn);
-        mDate=view.findViewById(R.id.dateTv);
-        mLocation=view.findViewById(R.id.locationTv);
-        mShurooq=view.findViewById(R.id.shurooqTv);
-        mZuhar=view.findViewById(R.id.zuharTv);
-        mAsar=view.findViewById(R.id.asarTv);
-        mMaghrib=view.findViewById(R.id.MaghribTv);
-        mIsha=view.findViewById(R.id.IshaTv);
+        mFajar = view.findViewById(R.id.fajarTv);
+        mSearchEt = view.findViewById(R.id.searchEt);
+        mSearchBtn = view.findViewById(R.id.searchBtn);
+        mDate = view.findViewById(R.id.dateTv);
+        mLocation = view.findViewById(R.id.locationTv);
+        mShurooq = view.findViewById(R.id.shurooqTv);
+        mZuhar = view.findViewById(R.id.zuharTv);
+        mAsar = view.findViewById(R.id.asarTv);
+        mMaghrib = view.findViewById(R.id.MaghribTv);
+        mIsha = view.findViewById(R.id.IshaTv);
+    }
+    @Override
+    public void onPause() {
+        if (adView != null) {
+            adView.pause();
+        }
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (adView != null) {
+            adView.resume();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        if (adView != null) {
+            adView.destroy();
+        }
+        super.onDestroy();
     }
 }

@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <com.google.android.gms.ads.AdView
-            android:id="@+id/ad_view"
+            android:id="@+id/ad_view_ramzan"
             android:layout_width="match_parent"
 
             android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
 
         <LinearLayout
             android:id="@+id/l"
-            android:layout_below="@id/ad_view"
+            android:layout_below="@id/ad_view_ramzan"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

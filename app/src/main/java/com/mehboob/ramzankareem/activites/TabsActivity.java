@@ -11,37 +11,58 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.hassanjamil.hqibla.CompassActivity;
 import com.hassanjamil.hqibla.Constants;
 import com.mehboob.ramzankareem.R;
 import com.mehboob.ramzankareem.adapters.PageAdapter;
+
 public class TabsActivity extends AppCompatActivity {
     TabLayout tabLayout;
-    TabItem ramazanTime, prayTime,  tasbih, azkar, asmaUlHassana;
+    TabItem ramazanTime, prayTime, tasbih, azkar, asmaUlHassana;
     ViewPager viewPager;
     PageAdapter adapter;
     InterstitialAd mInterstitialAd;
+    AdRequest adRequest;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs);
+
+//        getSupportActionBar().setTitle("Ramzan Kareem");
+
+
         intiView();
 
         adapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
 
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
+            }
+        });
+
+        adRequest = new AdRequest.Builder().build();
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
                 if (tab.getPosition() == 0 || tab.getPosition() == 1 || tab.getPosition() == 2
-                        || tab.getPosition() == 3 || tab.getPosition() == 4 ){
+                        || tab.getPosition() == 3 || tab.getPosition() == 4) {
                     adapter.notifyDataSetChanged();
                 }
 
@@ -71,34 +92,57 @@ public class TabsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-       switch (item.getItemId()){
-           case R.id.menu_qibla:
-               Intent intent = new Intent(TabsActivity.this, CompassActivity.class);
-               intent.putExtra(Constants.TOOLBAR_TITLE, "My App");		// Toolbar Title
-               intent.putExtra(Constants.TOOLBAR_BG_COLOR, "#FFFFFF");		// Toolbar Background color
-               intent.putExtra(Constants.TOOLBAR_TITLE_COLOR, "#000000");	// Toolbar Title color
-               intent.putExtra(Constants.COMPASS_BG_COLOR, "#FFFFFF");		// Compass background color
-               intent.putExtra(Constants.ANGLE_TEXT_COLOR, "#000000");		// Angle Text color
-               intent.putExtra(Constants.DRAWABLE_DIAL, R.drawable.dial);	// Your dial drawable resource
-               intent.putExtra(Constants.DRAWABLE_QIBLA, R.drawable.qibla); 	// Your qibla indicator drawable resource
-               intent.putExtra(Constants.FOOTER_IMAGE_VISIBLE, View.VISIBLE|View.INVISIBLE|View.GONE);	// Footer World Image visibility
-               intent.putExtra(Constants.LOCATION_TEXT_VISIBLE, View.VISIBLE|View.INVISIBLE|View.GONE); // Location Text visibility
-               startActivity(intent);
-               break;
+        switch (item.getItemId()) {
+            case R.id.menu_qibla:
+                Toast.makeText(this, "Coming Soon Insha'ALLAH", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(TabsActivity.this, CompassActivity.class);
+                intent.putExtra(Constants.TOOLBAR_TITLE, "My App");        // Toolbar Title
+                intent.putExtra(Constants.TOOLBAR_BG_COLOR, "#FFFFFF");        // Toolbar Background color
+                intent.putExtra(Constants.TOOLBAR_TITLE_COLOR, "#000000");    // Toolbar Title color
+                intent.putExtra(Constants.COMPASS_BG_COLOR, "#FFFFFF");        // Compass background color
+                intent.putExtra(Constants.ANGLE_TEXT_COLOR, "#000000");        // Angle Text color
+                intent.putExtra(Constants.DRAWABLE_DIAL, R.drawable.dial);    // Your dial drawable resource
+                intent.putExtra(Constants.DRAWABLE_QIBLA, R.drawable.qibla);    // Your qibla indicator drawable resource
+                intent.putExtra(Constants.FOOTER_IMAGE_VISIBLE, View.VISIBLE | View.INVISIBLE | View.GONE);    // Footer World Image visibility
+                intent.putExtra(Constants.LOCATION_TEXT_VISIBLE, View.VISIBLE | View.INVISIBLE | View.GONE); // Location Text visibility
+                startActivity(intent);
+                break;
 
-       }
+        }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onBackPressed() {
 
+        InterstitialAd.load(this, getString(R.string.admob_interstitial_id), adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        mInterstitialAd = interstitialAd;
+
+                        if (mInterstitialAd != null) {
+                            mInterstitialAd.show(TabsActivity.this);
+                        }
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+
+                        mInterstitialAd = null;
+                    }
+                });
+
+
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("Confirm Exit..!!!");
         // Icon Of Alert Dialog
 
         // Setting Alert Dialog Message
-        alertDialogBuilder.setMessage("Are you sure,You want to exit");
+        alertDialogBuilder.setMessage("Are you sure to exit");
         alertDialogBuilder.setCancelable(false);
 
         alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -118,7 +162,7 @@ public class TabsActivity extends AppCompatActivity {
         alertDialogBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-               dialog.cancel();
+                dialog.cancel();
             }
         });
 

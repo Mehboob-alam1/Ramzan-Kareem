@@ -30,8 +30,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
+        android:background="@drawable/for_search"
         android:orientation="horizontal">
 
         <EditText
@@ -39,33 +40,40 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@null"
             android:hint="Search Your Location Here"
             android:inputType="text"
             android:maxLength="50"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:padding="20dp" />
 
         <ImageView
             android:id="@+id/searchBtn"
             android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            android:background="@drawable/ripple_effect"
             android:src="@drawable/search"
             android:textAllCaps="false"
             app:tint="#FFC845" />
     </LinearLayout>
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:padding="5dp"
             android:text="Date "
             android:textColor="@color/textColor"
             android:textSize="16sp"
@@ -75,8 +83,9 @@
             android:id="@+id/dateTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:gravity="center"
+            android:padding="5dp"
             android:text="Nothing to show"
             android:textColor="@color/textColor"
             android:textSize="14sp" />
@@ -85,8 +94,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
         android:orientation="horizontal">
 
         <TextView
@@ -94,6 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
 
+            android:padding="5dp"
             android:text="Location"
             android:textColor="@color/textColor"
             android:textSize="16sp"
@@ -103,12 +115,23 @@
             android:id="@+id/locationTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:gravity="center"
+            android:padding="5dp"
             android:text="Nothing to show "
             android:textColor="@color/textColor"
             android:textSize="14sp" />
     </LinearLayout>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/ad_view_pray_time"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+
+        app:adSize="BANNER"
+
+        app:adUnitId="@string/admob_banner_id" />
 
     <LinearLayout
         android:layout_width="match_parent"

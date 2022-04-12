@@ -11,11 +11,14 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/gradient"
+        android:background="@color/color_500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/menu" />
+        app:menu="@menu/menu"
+        app:subtitle="2022"
+        app:subtitleTextColor="@color/textColor"
+        app:title="Ramzan Kareem" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
@@ -26,8 +29,8 @@
         app:tabGravity="fill"
         app:tabIndicatorColor="@color/color_200"
         app:tabMode="scrollable"
-        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
         app:tabSelectedTextColor="@color/color_500"
+        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
         app:tabTextColor="@color/black">
 
         <com.google.android.material.tabs.TabItem
@@ -53,6 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Azkar" />
+
         <com.google.android.material.tabs.TabItem
             android:id="@+id/asma"
             android:layout_width="wrap_content"
@@ -60,9 +64,10 @@
             android:text="99 names of Allah" />
 
     </com.google.android.material.tabs.TabLayout>
+
     <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/viewPager"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>
